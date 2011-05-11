@@ -17,6 +17,7 @@ module DeepTest
 
     attr_accessor *VALID_OPTIONS.map {|o| o.name}
     attr_accessor :ssh_client_connection_info, :environment_log_level
+    attr_accessor :ruby_opts
 
     def number_of_agents
       return CpuInfo.new.count unless @number_of_agents

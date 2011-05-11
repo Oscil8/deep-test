@@ -18,7 +18,8 @@ module DeepTest
       task @name do
         lib_options = @libs.any? ? "-I" + @libs.join(File::PATH_SEPARATOR) : ""
         require_options = requires.map {|f| "-r#{f}"}.join(" ")
-        ruby "#{lib_options} #{require_options} #{runner} '#{@options.to_command_line}'"
+        @options.ruby_opts = "#{lib_options} #{require_options}"
+        ruby "#{@options.ruby_opts} #{runner} '#{@options.to_command_line}'"
       end
     end
 
