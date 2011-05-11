@@ -17,12 +17,12 @@ task :default => %w[
   test 
   spec 
   deep_test
-  deep_spec_1.1.8
+  #deep_spec_1.1.8
   deep_spec_1.1.12
-  distributed_test
-  distributed_spec
-  negative_acceptance_tests
-  test_rails_project
+  #distributed_test
+  #distributed_spec
+  #negative_acceptance_tests
+  #test_rails_project
 ]
 
 task :pc => :default
@@ -107,9 +107,9 @@ end
 
 specification = Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
-	s.name   = "deep_test"
+	s.name   = "deep_test_pre"
   s.summary = "DeepTest runs tests in multiple processes."
-	s.version = "1.2.2"
+	s.version = "2.0"
 	s.author = "anonymous z, Dan Manges, David Vollbracht"
 	s.description = s.summary
 	s.email = "daniel.manges@gmail.com"
