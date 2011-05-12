@@ -13,10 +13,12 @@ module DeepTest
       end
 
       def process_work_units(central_command)
-        suite = ::Test::Unit::AutoRunner::COLLECTORS[:objectspace].call NO_FILTERS
+        collector = ::Test::Unit::AutoRunner.respond_to?(:collector) ?
+          ::Test::Unit::AutoRunner.collector(:object_space) : ::Test::Unit::AutoRunner::COLLECTORS[:objectspace]
+        suite = collector.call NO_FILTERS
         supervised_suite = DeepTest::Test::SupervisedTestSuite.new(suite, central_command)
         require 'test/unit/ui/console/testrunner'
-        result = ::Test::Unit::UI::Console::TestRunner.run(supervised_suite, ::Test::Unit::UI::NORMAL)
+        result = ::Test::Unit::UI::Console::TestRunner.run(supervised_suite)
         result.passed?
       end
     end
