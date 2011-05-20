@@ -1,3 +1,9 @@
+# ensure that we are running with the proper version of Test::Unit
+if ENV['TEST_UNIT_GEM']
+  require 'rubygems'
+  gem 'test-unit', ENV['TEST_UNIT_GEM']
+end
+
 require File.dirname(__FILE__) + "/../../deep_test"
 options = DeepTest::Options.from_command_line(ENV['OPTIONS'])
 ENV['DEEP_TEST_LOG_LEVEL'] = options.environment_log_level

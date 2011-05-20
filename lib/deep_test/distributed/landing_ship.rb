@@ -51,7 +51,9 @@ module DeepTest
 
       def spawn_command(options)
         "#{ShellEnvironment.like_login} && " + 
-        "cd #{options.mirror_path} && " + 
+        "cd #{options.mirror_path} && " +
+        (::Test::Unit.const_defined?("VERSION") ?
+          "TEST_UNIT_GEM=#{::Test::Unit::VERSION} " : "") +
         "OPTIONS=#{options.to_command_line} " + 
         "ruby #{options.ruby_opts} lib/deep_test/distributed/establish_beachhead.rb" 
       end
